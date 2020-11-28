@@ -1,0 +1,26 @@
+<div class="col-md-12">
+    <h4>Propietarios <small>de cada vehiculo</small></h4>
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Matricula</th>
+                <th scope="col">Propietario</th>
+                <th scope="col">Conductor</th>
+                <th scope="col">Color</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vehicle of vehiclesData">
+                <td> {{vehicle.plate}}</td>
+                <td> {{vehicle.owner_id}}</td>
+                <td> {{vehicle.driver_id}}</td>
+                <td> {{vehicle.colour}}</td>
+                <td> {{vehicle.trade_mark}}</td>
+                <td> {{vehicle.type}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

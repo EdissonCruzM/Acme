@@ -1,0 +1,23 @@
+<div class="col-md-12">
+    <h4>Informe <small>vehiculos</small></h4>
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Matricula</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Propietario</th>
+                <th scope="col">Conductor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let value of reportData">
+                <td> {{value.plate}}</td>
+                <td> {{value.trade_mark}}</td>
+                <td> {{value.owner_firt_name}} {{value.owner_second_name}} {{value.owner_surnames}}</td>
+                <td> {{value.driver_first_name}} {{value.driver_second_name}} {{value.driver_surnames}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

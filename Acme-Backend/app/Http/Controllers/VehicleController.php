@@ -22,7 +22,7 @@ class VehicleController extends Controller{
         return response()->json([
             'code'      => 200,
             'status'    => 'succes',
-            'news'      => $vehicles
+            'vehicles'  => $vehicles
         ], 200);
 
     }
@@ -43,7 +43,7 @@ class VehicleController extends Controller{
 
             // validar datos
             $validate = \Validator::make($params_array, [
-                'carPlate'  => 'required|unique:owners,id',
+                'carPlate'  => 'required|unique:vehicles,car_plate',
                 'ownerId'   => 'required|exists:owners,id|regex:/^[\s\ 0123456789]+$/u',
                 'driverId'  => 'required|exists:drivers,id|regex:/^[\s\ 0123456789]+$/u',
                 'colour'     => 'required|regex:/^[\pL\s\ .]+$/u',
@@ -142,6 +142,26 @@ class VehicleController extends Controller{
             'code'         => 200,
             'status'       => 'succes',
             'dirverVehicle' => $dirverVehicle
+        ], 200);
+    }
+
+    public function reportVehicle(){
+        // Cosultar conductor asignado a cada vehiculo
+        $report = Vehicle::join('drivers','driver_id','=','drivers.id')
+                           ->join('owners','owner_id','=','owners.id')
+                           ->select('car_plate as plate', 
+                                    'trade_mark',
+                                    'drivers.first_name as driver_first_name',
+                                    'drivers.second_name as driver_second_name',
+                                    'drivers.surnames as driver_surnames',
+                                    'owners.first_name as owner_firt_name',
+                                    'owners.second_name as owner_second_name',
+                                    'owners.surnames as owner_surnames')->get();
+
+        return response()->json([
+            'code'         => 200,
+            'status'       => 'succes',
+            'report' => $report
         ], 200);
     }
 }

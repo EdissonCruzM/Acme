@@ -1,0 +1,80 @@
+<div class="col-md-12">
+    <h4>Registrar <small>propietarios</small></h4>
+    <hr>
+    <form autocomplete="off" [formGroup]="vehicleForm" (ngSubmit)="create()">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Matricula</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. ABC-134" formControlName="carPlate" [class.is-invalid]="plateInvalid">
+                <small *ngIf="plateInvalid" class="text-danger">Matricula obligatoria</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">cedula propietario</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. 1049650495" formControlName="ownerId" [class.is-invalid]="ownerIdInvalid">
+                <small *ngIf="ownerIdInvalid" class="text-danger">Campo numerico obligatorio</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">cedula cronductor</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. 1049650495" formControlName="driverId" [class.is-invalid]="driverIdInvalid">
+                <small *ngIf="driverIdInvalid" class="text-danger">Campo numerico obligatorio</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Color</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Rojo" formControlName="colour" [class.is-invalid]="colourInvalid">
+                <small *ngIf="colourInvalid" class="text-danger">Campo texto obligatorio</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Marca</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Renut" formControlName="tradeMark" [class.is-invalid]="tradeMarkInvalid">
+                <small *ngIf="tradeMarkInvalid" class="text-danger">Campo obligatorio</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Tipo</label>
+            <div class="col-sm-10">
+                <select class="custom-select" formControlName="type" [class.is-invalid]="typeInvalid">
+                  <option value="Privado">Privado</option>
+                  <option value="Publico">Publico</option>
+                </select>
+                <small *ngIf="typeInvalid" class="text-danger">Campo obligatorio</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <button class="btn btn-primary mt-3 mb-5 btn-block" type="submit">Registrar</button>
+        </div>
+
+        <div class="form-group row" *ngIf="status == 'error'">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="col-md-8">
+                <small class="text-danger" *ngIf="errors.carPlate">La matricula ya ha sido regitrada</small>
+                <br *ngIf="errors.carPlate != undefined">
+                <small class="text-danger">El propietario no ha sido registrado</small>
+                <br *ngIf="errors.ownerId">
+                <small class="text-danger">El conductor no ha sido registrado</small>
+                <br *ngIf="errors.driverId">
+
+            </div>
+        </div>
+
+
+        <div class="form-group row" *ngIf="status == 'success'">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8 alert alert-success">
+                Se ha registrado el vehiculo
+            </div>
+        </div>
+
+    </form>
+</div>

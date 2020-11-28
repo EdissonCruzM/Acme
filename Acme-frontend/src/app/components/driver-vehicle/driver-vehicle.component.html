@@ -1,0 +1,35 @@
+<div class="col-md-12">
+    <h4>Conductores <small>asignados a cada vehiculo</small></h4>
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Matricula</th>
+                <th scope="col">Color</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Primer nombre</th>
+                <th scope="col">Segundo nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Ciudad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let driver of vehicleDriverData">
+                <td> {{driver.plate}}</td>
+                <td> {{driver.colour}}</td>
+                <td> {{driver.trade_mark}}</td>
+                <td> {{driver.type}}</td>
+                <td> {{driver.id}}</td>
+                <td> {{driver.first_name}}</td>
+                <td> {{driver.second_name}}</td>
+                <td> {{driver.surnames}}</td>
+                <td> {{driver.phone}}</td>
+                <td> {{driver.city}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

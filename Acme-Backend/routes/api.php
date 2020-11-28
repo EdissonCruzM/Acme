@@ -25,3 +25,4 @@ Route::apiResource('vehicle','VehicleController');
 // Ruta para cosulta de vehiculo asignado a propietario
 Route::get('vehicleOwner','VehicleController@ownerVehicle');
 Route::get('vehicleDriver','VehicleController@driverVehicle');
+Route::get('vehicleReport','VehicleController@reportVehicle');

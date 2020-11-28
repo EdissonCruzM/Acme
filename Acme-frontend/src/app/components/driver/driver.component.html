@@ -1,0 +1,71 @@
+<div class="col-md-12">
+    <h4>Registrar <small>conductores</small></h4>
+    <hr>
+    <form autocomplete="off" [formGroup]="driverForm" (ngSubmit)="create()">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Numero cedula</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. 1047293293" formControlName="id" [class.is-invalid]="idInvalid">
+                <small *ngIf="idInvalid" class="text-danger">la cedula es necesaria, solo numeros</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Primer nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Juan" formControlName="firstName" [class.is-invalid]="firstNameInvalid">
+                <small *ngIf="firstNameInvalid" class="text-danger">Campo texto obligatorio</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Segundo nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Albert" formControlName="secondName" [class.is-invalid]="secondNameInvalid">
+                <small *ngIf="secondNameInvalid" class="text-danger">Solo ingrese texto</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Apellidos</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Rodirguez Casas" formControlName="surnames" [class.is-invalid]="surnamesInvalid">
+                <small *ngIf="surnamesInvalid" class="text-danger">Campo texto obligatorio</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Dirección</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Cra 30 #20-15 sur" formControlName="address" [class.is-invalid]="addressInvalid">
+                <small *ngIf="addressInvalid" class="text-danger">Campo obligatorio</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Telefono</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. 3202340" formControlName="phone" [class.is-invalid]="phoneInvalid">
+                <small *ngIf="phoneInvalid" class="text-danger">Solo ingrese numeros</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Ciudad</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Ej. Bogotá D.C" formControlName="city" [class.is-invalid]="cityInvalid">
+                <small *ngIf="cityInvalid" class="text-danger">Campo obligatorio</small>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3 mb-5 btn-block" type="submit">Registrar</button>
+
+        <div class="form-group row" *ngIf="status == 'error'">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8 alert alert-danger">
+                Hay un propietario identificado con ese número de cedula.
+            </div>
+        </div>
+
+        <div class="form-group row" *ngIf="status == 'success'">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8 alert alert-success">
+                Se ha registrado el propietario
+            </div>
+        </div>
+
+    </form>
+</div>
